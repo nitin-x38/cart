@@ -4,19 +4,17 @@ var mongoose = require('mongoose');
 
 var carts = mongoose.Schema({
     cartId: {
-        type: 'Number',
+        type: 'String',
         required: true,
         unique: true
     },
     userId: {
         type: 'Number',
-        required: true,
-        unique: true
+        required: true
     },
     productId: {
-        type: 'Mixed',
-        required: true,
-        unique: true
+        type: 'String',
+        required: true
     },
     status: {
         type: 'String',

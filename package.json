@@ -1,22 +1,27 @@
 {
-  "name": "imagesearchbackend",
-  "version": "0.0.1",
-  "description": "image search",
+  "name": "cart",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "imahe",
-    "search"
-  ],
-  "author": "Mahendra Bhoir",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nitin-x38/cart.git"
+  },
+  "author": "Nitin",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nitin-x38/cart/issues"
+  },
+  "homepage": "https://github.com/nitin-x38/cart#readme",
   "dependencies": {
-    "axios": "^0.27.2",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
-    "express": "^4.18.1",
-    "mongoose": "5.9.26"
+    "express": "^4.18.2",
+    "mongoose": "5.9.26",
+    "nanoid": "^4.0.0",
+    "uuid": "^9.0.0"
   }
 }

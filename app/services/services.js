@@ -1,7 +1,7 @@
 "use strict";
 
 const CARTS_MODEL = require("../models/carts");
-
+const UUID = require("uuid");
 
 var cartServices = {
     
@@ -25,13 +25,11 @@ var cartServices = {
 
     },
 
-    updateProduct: async function(filter,updateData) {
+    removeProductFromCart: async function(findQuery,updateData) {
         try{
 
-            //filter={productId:1004};
-            //updateData={ $set:{ productPrice:70} }
-            console.log(filter,updateData);
-            var data = await CARTS_MODEL.update(filter, updateData,{multi:false});
+            console.log(findQuery,updateData);
+            var data = await CARTS_MODEL.update(findQuery, updateData,{multi:false});
             console.log(updateData);
             return data;
         }catch(e){
@@ -40,21 +38,25 @@ var cartServices = {
         }
     },
 
-    removeProductFromCart: async function(findQuery,deleteData) {
-        try{
-            console.log(findQuery,deleteData);
-            var data = await CARTS_MODEL.deleteMany(findQuery);
-            console.log(deleteData);
-            return data;
-        }catch(e){
-            console.log(e);
-            return 0;
-        }
-    },
+    // removeProductFromCart: async function(findQuery,deleteData) {
+    //     try{
+
+    //         //find/update//here
+    //         console.log(findQuery,deleteData);
+    //         var data = await CARTS_MODEL.deleteMany(findQuery);
+    //         console.log(deleteData);
+    //         return data;
+    //     }catch(e){
+    //         console.log(e);
+    //         return 0;
+    //     }
+    // },
 
     addProductToCart: async function(cartData) {
         try {
 
+            let cartId=await UUID.v4();
+            cartData.cartId=cartId;
             let cartObj = new CARTS_MODEL(cartData);
             let newProduct = await cartObj.save();
             return newProduct;
