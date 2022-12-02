@@ -15,7 +15,7 @@ var cartServices = {
                 .read("secondaryPreferred")
                 .sort(sort)
                 .limit(limit)
-                .skip(skip)
+                .skip(skip) 
                 .lean();
         } catch (error) {
             console.log(error);
@@ -25,32 +25,19 @@ var cartServices = {
 
     },
 
-    removeProductFromCart: async function(findQuery,updateData) {
+    removeProductFromCart: async function(findQuery,deleteData) {
         try{
 
-            console.log(findQuery,updateData);
-            var data = await CARTS_MODEL.update(findQuery, updateData,{multi:false});
-            console.log(updateData);
+            //find/update//here
+            console.log(findQuery,deleteData);
+            var data = await CARTS_MODEL.deleteOne(findQuery);
+            console.log(deleteData);
             return data;
         }catch(e){
             console.log(e);
             return 0;
         }
     },
-
-    // removeProductFromCart: async function(findQuery,deleteData) {
-    //     try{
-
-    //         //find/update//here
-    //         console.log(findQuery,deleteData);
-    //         var data = await CARTS_MODEL.deleteMany(findQuery);
-    //         console.log(deleteData);
-    //         return data;
-    //     }catch(e){
-    //         console.log(e);
-    //         return 0;
-    //     }
-    // },
 
     addProductToCart: async function(cartData) {
         try {
